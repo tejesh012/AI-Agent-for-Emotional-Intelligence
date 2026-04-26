@@ -23,18 +23,7 @@ def create_app(config_name='default'):
     bcrypt.init_app(app)
 
     # Configure CORS
-    CORS(app, resources={
-        r"/api/*": {
-            "origins": [
-    "http://localhost:3000", 
-    "http://127.0.0.1:3000",
-    "https://ai-agent-for-emotional-intelligence-jet.vercel.app"
-],
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Authorization"],
-            "supports_credentials": True
-        }
-    })
+    CORS(app, origins="*")
 
     # Register blueprints
     from app.routes.auth import auth_bp
