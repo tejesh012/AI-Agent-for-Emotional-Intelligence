@@ -23,8 +23,7 @@ def create_app(config_name='default'):
     bcrypt.init_app(app)
 
     # Configure CORS
-    CORS(app, origins="*")
-
+   CORS(app, supports_credentials=True, origins="*", allow_headers=["Content-Type", "Authorization"])
     # Register blueprints
     from app.routes.auth import auth_bp
     from app.routes.user import user_bp
